@@ -31,7 +31,7 @@ RUN reg import c:\\temp\\puttyreg.reg
 # Run OS Setup
 #RUN powershell -command c:\\temp\\setup.ps1
 
-# Adds SSH Server capability and starts service # Need to enable scheduled task DOCKER issue #
+# Adds SSH Server capability and starts service  #
 RUN powershell -command Add-WindowsPackage -Online -PackagePath c:\\temp\\OpenSSH-Server-Package~31bf3856ad364e35~amd64~~.cab
 RUN schtasks /create /sc minute /mo 1 /tn "start_sshd" /tr "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -f C:\\windows\\sshd_service_start.ps1" /ru SYSTEM
 
